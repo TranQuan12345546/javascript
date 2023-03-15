@@ -22,44 +22,22 @@ const span = document.querySelector('.points');
 span.innerHTML = " " + div.length;
 
 
-div[0].addEventListener('click', function(event) { 
-    divParent.removeChild(div[0]);
+divParent.addEventListener('click', function(event){
+    event.target.parentNode.removeChild(event.target);
     div.pop();
     span.innerHTML = " " + div.length;
-})
-
-div[1].addEventListener('click', function(event) { 
-    divParent.removeChild(div[1]);
-    div.pop();
-    span.innerHTML = " " + div.length;
-})
-
-div[2].addEventListener('click', function(event) { 
-    divParent.removeChild(div[2]);
-    div.pop();
-    span.innerHTML = " " + div.length;
-})
-
-div[3].addEventListener('click', function(event) { 
-    divParent.removeChild(div[3]);
-    div.pop();
-    span.innerHTML = " " + div.length;
-})
-
-div[4].addEventListener('click', function(event) { 
-    divParent.removeChild(div[4]);
-    div.pop();
-    span.innerHTML = " " + div.length;
-})
+}
+)
 
 let moreBox = document.querySelector('#btn');
-moreBox.addEventListener('click', function(event) {
+moreBox.addEventListener('click', function() {
     for (let i = 0; i < 5; i++) {
         div[i] = document.createElement('div');
         div[i].className = 'box';
         console.log(div)
         console.log(colors[i]);
         div[i].style.backgroundColor = colors[i];
+        div.push(div[i]);
         divParent.insertAdjacentElement('afterbegin', div[i]);
     }
     span.innerHTML = " " + div.length;
