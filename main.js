@@ -12,8 +12,6 @@ let div = [];
 for (let i = 0; i < 5; i++) {
     div[i] = document.createElement('div');
     div[i].className = 'box';
-    console.log(div)
-    console.log(colors[i]);
     div[i].style.backgroundColor = colors[i];
     divParent.insertAdjacentElement('afterbegin', div[i]);
 }
@@ -28,17 +26,17 @@ divParent.addEventListener('click', function(event){
     span.innerHTML = " " + div.length;
 }
 )
+console.log(div.length);
 
 let moreBox = document.querySelector('#btn');
 moreBox.addEventListener('click', function() {
     for (let i = 0; i < 5; i++) {
-        div[i] = document.createElement('div');
-        div[i].className = 'box';
-        console.log(div)
-        console.log(colors[i]);
-        div[i].style.backgroundColor = colors[i];
-        div.push(div[i]);
-        divParent.insertAdjacentElement('afterbegin', div[i]);
+        let div1 = document.createElement('div');
+        div1.className = 'box';
+        div1.style.backgroundColor = colors[i];
+        div.push(div1);
+        divParent.insertAdjacentElement('afterbegin', div1);
+        console.log(div.length);
     }
     span.innerHTML = " " + div.length;
 })
