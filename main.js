@@ -1,22 +1,20 @@
+const div = document.querySelectorAll('.form-input');
+
 const labelUsername = document.createElement('label');
 labelUsername.innerText = 'Username';
-const input1 = document.querySelector('#username');
-input1.insertAdjacentElement('beforebegin', labelUsername);
-
-
+div[0].insertAdjacentElement('beforebegin', labelUsername);
 
 const labelPassword = document.createElement('label');
 labelPassword.innerText = 'Password';
-const input2 = document.querySelector('#password');
-input2.insertAdjacentElement('beforebegin', labelPassword);
-
+div[1].insertAdjacentElement('beforebegin', labelPassword);
 
 const labelConfirmPass = document.createElement('label');
 labelConfirmPass.innerText = 'Confirm password';
+div[2].insertAdjacentElement('beforebegin', labelConfirmPass);
+
+const input1 = document.querySelector('#username');
+const input2 = document.querySelector('#password');
 const input3 = document.querySelector('#confirmPassword');
-input3.insertAdjacentElement('beforebegin', labelConfirmPass);
-
-
 
 
 document.addEventListener('keydown', function() {
