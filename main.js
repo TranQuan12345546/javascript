@@ -13,6 +13,7 @@ labelConfirmPass.innerText = 'Confirm password';
 div[2].insertAdjacentElement('beforebegin', labelConfirmPass);
 
 const input1 = document.querySelector('#username');
+console.log(input1);
 const input2 = document.querySelector('#password');
 const input3 = document.querySelector('#confirmPassword');
 
