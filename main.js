@@ -8,14 +8,9 @@ const labelPassword = document.createElement('label');
 labelPassword.innerText = 'Password';
 div[1].insertAdjacentElement('beforebegin', labelPassword);
 
-const labelConfirmPass = document.createElement('label');
-labelConfirmPass.innerText = 'Confirm password';
-div[2].insertAdjacentElement('beforebegin', labelConfirmPass);
 
 const input1 = document.querySelector('#username');
-console.log(input1);
 const input2 = document.querySelector('#password');
-const input3 = document.querySelector('#confirmPassword');
 
 
 document.addEventListener('keydown', function() {
@@ -25,22 +20,50 @@ document.addEventListener('keydown', function() {
 
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', function(event) {
-    let Username = input1.value;
+    let username = input1.value;
     let password = input2.value;
-    let rePassword = input3.value;
-    if(Username == '' || password == '' || rePassword == '') {
+    if(username == '' || password == '') {
         btn.disabled = true;
         btn.style.cursor = 'not-allowed';
-    } else if (password != rePassword) {
-        alert('confirm password khong dung!');
-        event.preventDefault();
     } else {
-        alert(' đăng ký thành công')
+        login(username, password);
+        event.preventDefault();
+        // if (json == "username hoặc password chưa chính xác") {
+        //     alert("username hoặc password chưa chính xác");
+        // } 
+        // if (json.type == Object) {
+        //     alert(`Xin chào ${username}` + json.email + json.avatar);
+        // }
     }
+    
 })
 
+async function login(username, password) {
+    try {
+        fetch(`http://localhost:8080/login?username=${username}&password=${password}`)
+        .then((response) => response.json())
+        .then((json) => {
+            if(json.length == 0) {
+                alert("username hoặc password chưa chính xác");
+            } else {
+                alert(`Xin chào ${username}` + ". Email: " + json[0].email + ". Avatar: " + json[0].avatar);
+            }
+        });
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// $(document).ready(function() {
+//     $.ajax({
+//         url: `http://localhost:8080/login?username=${username}&password=${password}`
+//     }).then(function(jqxhr) {
+//        console.log(jqxhr);
+//     });
+// });
+
 let btnHide2 = document.querySelector('.hide2');
-let btnHide3 = document.querySelector('.hide3');
 
 btnHide2.addEventListener('click', function(event) {
     if(input2.type == 'password') {
@@ -51,11 +74,3 @@ btnHide2.addEventListener('click', function(event) {
     event.preventDefault();
 })
 
-btnHide3.addEventListener('click', function(event) {
-    if(input3.type == 'password') {
-        input3.type = 'text';
-    } else {
-        input3.type = 'password';
-    }
-    event.preventDefault();
-})
