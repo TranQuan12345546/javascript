@@ -46,6 +46,10 @@ async function login(username, password) {
             if(json.length == 0) {
                 alert("username hoặc password chưa chính xác");
             } else {
+                let div = document.querySelector('.container');
+                div.style.display = 'none';
+                let p = document.querySelector('#login-success');
+                p.innerText =`Xin chào ${username}` + ". Email: " + json[0].email + ". Avatar: " + json[0].avatar;
                 alert(`Xin chào ${username}` + ". Email: " + json[0].email + ". Avatar: " + json[0].avatar);
             }
         });
